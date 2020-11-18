@@ -76,6 +76,10 @@ function DocsOverview$default(Props) {
       "https://github.com/reason-association/reanalyze"
     ]
   ];
+  var tools = [[
+      "Syntax Lookup",
+      "/syntax-lookup"
+    ]];
   var versionSelect;
   if (showVersionSelect) {
     var onChange = function (evt) {
@@ -110,6 +114,9 @@ function DocsOverview$default(Props) {
                     }), React.createElement(DocsOverview$Card, {
                       title: "Ecosystem",
                       hrefs: ecosystem
+                    }), React.createElement(DocsOverview$Card, {
+                      title: "Tools",
+                      hrefs: tools
                     })));
 }
 
