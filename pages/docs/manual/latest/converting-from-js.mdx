@@ -8,14 +8,14 @@ canonical: "/docs/manual/latest/converting-from-js"
 
 ReScript offers a unique project conversion methodology which:
 - Ensures minimal disruption to your teammates (very important!).
-- Remove the typical friction of verifying conversion's correctness and performance guarantees.
+- Removes the typical friction of verifying conversion's correctness and performance guarantees.
 - Doesn't force you to search for pre-made binding libraries made by others. **ReScript doesn't need the equivalent of TypeScript's `DefinitelyTyped`**.
 
 Enjoy!
 
 ## Step 1: Install ReScript
 
-Run `npm install --save-dev bs-platform` on your project, then imitate our [New Project](installation#new-project) workflow by adding a `bsconfig.json` at the root. Then start `bsb -w`.
+Run `npm install --save-dev bs-platform` in your project, then imitate our [New Project](installation#new-project) workflow by adding a `bsconfig.json` at the root. Then start `bsb -w`.
 
 ## Step 2: Copy Paste the Entire JS File
 
@@ -281,25 +281,25 @@ exports.queryResult = queryResult;
 </CodeTab>
 
 We've:
-- introduced an opaque types for `school` and `student` to prevent misusages their values
+- introduced opaque types for `school` and `student` to prevent misusage of their values
 - typed the payload as a record with only the `student` field
 - typed `getStudentById` as the sole method of `student`
 
-Check that the `.bs.js` output didn't change. How rigidly to type your JavaScript code is up to you; we recommend not typing them too elaborately; it's sometime an endless chase, and produces diminishing returns, especially considering that the elaborate-ness might turn off your potential teammates.
+Check that the `.bs.js` output didn't change. How rigidly you type your JavaScript code is up to you. We recommend not typing too elaborately; it can become an endless chase with diminishing returns, and may turn off potential teammates due to over-complexity.
 
 ## Tips & Tricks
 
-In the same vein of idea, **resist the urge to write your own wrapper functions for the JS code you're converting**. Use [`external`s](external), which are guaranteed to be erased in the output. And avoid trying to take the occasion to convert JS data structures into ReScript-specific data structures like variant or list. **This isn't the time for that**.
+Similarly, **resist the urge to write your own wrapper functions for the JS code you're converting**. Use [`external`s](external), which are guaranteed to be erased in the output. Avoid taking the occasion to convert JS data structures into ReScript-specific data structures like variant or list. **This isn't the time for that**.
 
-The moment you produce extra conversion code in the output, your skeptical teammate's mental model might switch from "I recognize this output" to "this conversion might be introducing more problems than it solves. Why are we testing ReScript again?". Then you've lost.
+The moment you introduce extra conversion code into the output, your skeptical teammate's mental model might switch from "I recognize this output" to "this conversion might be creating more problems than solutions. Why are we testing ReScript again?". Then, you've lost.
 
 ## Conclusion
 
 - Paste the JS code into a new ReScript file as embedded raw JS code.
-- Compile and keep the output file open. Check and diff against original JS file. Free regression tests.
+- Compile and keep the output file open. Check and diff against the original JS file. Free regression tests.
 - Always make sure your file is syntactically valid. Don't worry about fixing types before that.
 - (Ab)use [object](object.md) accesses to quickly convert things over.
 - Optionally clean up the types for robustness.
-- Don't go overboard and turn off your boss and fellow teammates.
+- Don't go overboard; you might turn off your boss and fellow teammates.
 - Proudly display that you've conserved the semantics and performance characteristics during the conversion by showing your teammates the eerily familiar output.
-- Get promoted for introducing a new technology the safer, mature way.
+- Get promoted for introducing a new technology the safe, mature way.
